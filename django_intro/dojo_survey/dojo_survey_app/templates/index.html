@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link type="text/css" rel="stylesheet"
+    href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?themeRevisionID=5f30e2a790832f3e96009402"> 
+</head>
+
+<body>
+    <form class="jotform-form" action="result" method="post" name="form_221613700666451" id="221613700666451"
+        accept-charset="utf-8" autocomplete="on" novalidate="true">
+        {% csrf_token %}
+        <input type="hidden" name="formID" value="221613700666451">
+        <input type="hidden" id="JWTContainer" value="">
+        <input type="hidden" id="cardinalOrderNumber" value="">
+        <div role="main" class="form-all">
+            <style>
+                .form-all:before {
+                    background: none;
+                }
+            </style>
+            <ul class="form-section page-section">
+                <li id="cid_1" class="form-input-wide" data-type="control_head">
+                    <div style="background-color:rgb(86, 74, 109);" class="form-header-group  header-large">
+                        <div class="header-text httal htvam">
+                            <h1 style="color:rgb(255, 255, 255);" id="header_1" class="form-header" data-component="header">
+                                Dojo Survey
+                            </h1>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-line" data-type="text">
+                    <label name="name" class="form-label form-label-top" id="label_4" for="input_4">Your Name </label>
+                    <div id="cid_4" class="form-input-wide" data-layout="half">
+                        <input type="text" id="input_4" name="name" data-type="input-number"
+                            class=" form-number-input form-textbox validate[Numeric]" data-defaultvalue=""
+                            style="width:310px" size="310" value="" data-component="number" aria-labelledby="label_4"
+                            step="any">
+                    </div>
+                </li>
+                <li class="form-line" data-type="control_radio" id="id_19">
+                    <label class="form-label form-label-top form-label-auto" id="label_19" for="input_19"> Gender
+                    </label>
+                    <div id="cid_19" class="form-input-wide" data-layout="full">
+                        <div class="form-single-column" role="group" aria-labelledby="label_19" data-component="radio">
+                            <span class="form-radio-item" style="clear:left">
+                                <span class="dragger-item">
+                                </span>
+                                <input name="gender" type="radio" aria-describedby="label_19" class="form-radio"
+                                    id="input_19_0" value="male">
+                                <label id="label_input_19_0" for="input_19_0"> male </label>
+                            </span>
+                            <span class="form-radio-item" style="clear:left">
+                                <span class="dragger-item">
+                                </span>
+                                <input name="gender" type="radio" aria-describedby="label_19" class="form-radio"
+                                    id="input_19_1" name="q19_gender" value="female">
+                                <label id="label_input_19_1" for="input_19_1"> female </label>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-line" data-type="control_dropdown" id="id_5">
+                    <label class="form-label form-label-top form-label-auto" id="label_5" for="input_5">Dojo Location
+                    </label>
+                    <div id="cid_5" class="form-input-wide" data-layout="half">
+                        <select class="form-dropdown is-active" id="input_5" name="locations" style="width:310px"
+                            data-component="dropdown">
+                            <option value=""> Please Select </option>
+                            <option selected value="San Jose"> San Jose </option>
+                            <option value="Seattle"> Seattle </option>
+                            <option value="Los Angeles"> Los Angeles </option>
+                            <option value="Chicago"> Chicago </option>
+                        </select>
+                    </div>
+                </li>
+                <li class="form-line" data-type="control_checkbox" id="id_20">
+                    <label class="form-label form-label-top form-label-auto" id="label_20" for="input_20">Favorite Language
+                    </label>
+                    <div id="cid_20" class="form-input-wide" data-layout="full">
+                        <div class="form-single-column" role="group" aria-labelledby="label_20"
+                            data-component="checkbox">
+                            <span class="form-checkbox-item" style="clear:left">
+                                <span class="dragger-item">
+                                </span>
+                                <input type="checkbox" data-limit="only-one-in-a-group" aria-describedby="label_20" class="form-checkbox" id="input_20_0"
+                                    name="languages" value="Python">
+                                <label id="label_input_20_0" for="input_20_0"> Python </label>
+                            </span>
+                            <span class="form-checkbox-item" style="clear:left">
+                                <span class="dragger-item">
+                                </span>
+                                <input type="checkbox" data-limit="only-one-in-a-group" aria-describedby="label_20" class="form-checkbox" id="input_20_1"
+                                    name="languages" value="Java">
+                                <label id="label_input_20_1" for="input_20_1"> Java </label>
+                            </span>
+                            <span class="form-checkbox-item" style="clear:left">
+                                <span class="dragger-item">
+                                </span>
+                                <input type="checkbox" data-limit="only-one-in-a-group" aria-describedby="label_20" class="form-checkbox" id="input_20_2"
+                                    name="languages" value="C++">
+                                <label id="label_input_20_2" for="input_20_2"> C++ </label>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+                <li class="form-line" data-type="control_textarea" id="id_11">
+                    <label class="form-label form-label-top form-label-auto" id="label_11" for="input_11"> Comment
+                        (optional) </label>
+                    <div id="cid_11" class="form-input-wide" data-layout="full">
+                        <textarea name="comment" id="input_11" class="form-textarea" style="width:648px;height:150px"
+                            data-component="textarea" aria-labelledby="label_11"></textarea>
+                    </div>
+                </li>
+                <li class="form-line" data-type="control_button" id="id_2">
+                    <div id="cid_2" class="form-input-wide" data-layout="full">
+                        <div data-align="left"
+                            class="form-buttons-wrapper form-buttons-left   jsTest-button-wrapperField">
+                            <button style="background-color:rgb(86, 74, 109);border:1px solid gray;color:rgb(255, 255, 255);" id="input_2" type="submit"
+                                class="form-submit-button submit-button jf-form-buttons jsTest-submitField"
+                                data-component="button" data-content="">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </li>
+                <li style="display:none">
+                    Should be Empty:
+                    <input type="text" name="website" value="">
+                </li>
+            </ul>
+        </div>
+        <script>
+            let cbxes = document.querySelectorAll('input[type="checkbox"][data-limit="only-one-in-a-group"]');
+            [...cbxes].forEach((cbx) => {
+                cbx.addEventListener('change', (e) => {
+                    if (e.target.checked)
+                        uncheckOthers(e.target);
+                });
+            });
+            function uncheckOthers (clicked) {
+                let name = clicked.getAttribute('name');
+                // find others in same group, uncheck them
+                [...cbxes].forEach((other) => {
+                    if (other != clicked && other.getAttribute('name') == name)
+                        other.checked = false;
+                });
+            }
+        </script>
+</body>
+</html>
