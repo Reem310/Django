@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(29, 29, 29);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1{
+    background-color: rgb(222, 221, 221);
+    color: rgb(113, 38, 38);
+    border: 5px rgb(174, 174, 174) solid;
+    padding: 1%;
+    text-align: center;
+}
+.time{
+color: rgb(222, 221, 221);
+padding: 1%;
+text-align: center;
+}
