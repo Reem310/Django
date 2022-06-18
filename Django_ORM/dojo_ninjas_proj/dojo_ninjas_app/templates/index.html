@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <title>Dojos $ Ninjas</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-evenly col-lg-10">
+        <div class="w-25 container text-center my-4 ">
+            <h1 class="text-success">Add a Dojo</h1>
+            <form action="/add" method="post">
+                {% csrf_token %}
+                <div class=" mb-3 d-flex justify-content-evenly align-items-center ">
+                    <label for="dojo_name">Name </label>
+                    <input type="text" name="dojo_name" class="m-2">
+                </div>
+                <div class="mb-3 d-flex justify-content-evenly align-items-center">
+                    <label for="city">City </label>
+                    <input type="text" name="city" class="m-2">
+                </div>
+                <div class="mb-3 d-flex justify-content-evenly align-items-center">
+                    <label for="state">State</label>
+                    <input type="text" name="state" class="m-2">
+                </div>
+                <input type="hidden" name='add' value="add_dojo">
+                <button type="submit" class="btn btn-dark">Add</button>
+            </form>
+        </div>
+        <div class="w-25 text-center my-4">
+            <h1 class="text-success">Add a Ninja</h1>
+            <form action="/add" method="post">
+                {% csrf_token %}
+                <div class="mb-3 d-flex justify-content-evenly align-items-center">
+                    <label for="fname">First Name </label>
+                    <input type="text" name="fname" class="m-2">
+                </div>
+                <div class="mb-3 d-flex justify-content-evenly align-items-center">
+                    <label for="lname">Last Name </label>
+                    <input type="text" name="lname" class="m-2">
+                </div>
+                <div class="mb-3 d-flex justify-content-evenly align-items-center">
+                    <label id="label_5" for="dojo" class=" w-25">Dojo</label>
+                    <select class=" p-1 m-2" id="input_5" style="width:180px;" name="select_dojo" required>
+                        <option value="select" selected>-select a dojo-</option>
+                        {% for dojo in dojos %}
+                        <option value="{{dojo.id}}">{{dojo.name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <input type="hidden" name="add" value="add_ninja">
+                <button type="submit" class="btn btn-dark">Add</button>
+            </form>
+        </div>
+    </div>
+    <hr>
+    <div class="container d-flex justify-content-center">
+        <div class="d-flex flex-column mb-4">
+            <ul>
+                <h1 class="text-success">All the Dojos</h1>
+                {% for dojo in dojos %}
+                <ul>
+                    <h3 class="text-secondary">{{dojo.name}}</h3>
+                    <ul>
+                        {% for ninja in dojo.ninja.all %}
+                        <li> {{ninja.first_name}} {{ninja.last_name}} </li>
+                        {%endfor%}
+                    </ul>
+                </ul>
+                {%endfor%}
+            </ul>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
