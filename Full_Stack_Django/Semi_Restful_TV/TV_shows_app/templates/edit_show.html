@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <title>Update</title>
+</head>
+
+<body class="container col-4 my-4">
+    <a href="/shows">Go Back</a>
+    <h1>Edit Show {{show.id}}</h1>
+    <form action="/shows/{{show.id}}/update" method="post" class="d-flex flex-column col-12">
+        {% csrf_token %}
+        <label for="title">Title</label>
+        <input type="text" name="title" value="{{show.title}}">
+        <div class="d-flex">
+            <div>
+                <label for="network">Network</label>
+                <input type="text" name="network" value="{{show.network}}">
+            </div>
+            <div class="mx-3">
+                <label for="date">Release Date</label>
+                <input type="date" name="rel_date" value="{{show.release_date|date:'Y-m-d'}}">
+            </div>
+        </div>
+        <label for="desc">Describtion</label>
+        <textarea name="desc" cols="30" rows="4">{{show.desc}}</textarea>
+        <button class="btn btn-dark my-2 col-3">Update</button>
+    </form>
+    <a href="/shows/{{show.id}}/update">Go To Show</a>
+</body>
+
+</html>
