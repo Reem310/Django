@@ -1,0 +1,110 @@
+
+Query: Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby
+
+Book.objects.create(title='C Sharp')
+Book.objects.create(title='Java')
+Book.objects.create(title='Python')
+Book.objects.create(title='PHP')
+Book.objects.create(title='Ruby')
+
+Query: Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevsky, William Shakespeare, Lau Tzu
+
+Authors.objects.create(first_name='Jane', last_name='Austen')
+Authors.objects.create(first_name='Emily', last_name='Dickinson')
+Authors.objects.create(first_name='Fyodor', last_name='Dostoevsky')
+Authors.objects.create(first_name='William', last_name='Shakespeare')
+Authors.objects.create(first_name='Lau', last_name='Tzu')
+
+Add a new text field in the authors table called 'notes':
+
+notes = models.TextField()
+
+Create and run the migration files to update the table in your database:
+
+(djangoPy3Env) reem@Reems-MacBook-Pro books_authors_proj % python manage.py makemigrations
+You are trying to add a non-nullable field 'notes' to authors without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 2
+notes = models.TextField(default='')
+
+Query: Change the name of the C Sharp book to C#:
+
+update = Book.objects.get(id=1)
+update.title='C#'
+update.save()
+
+Query: Change the first name of the 4th author to Bill:
+
+update2= Authors.objects.get(id=4)
+update2.first_name='Bill'
+update2.save()
+
+Query: Assign the first author to the first 2 books:
+
+author1=Authors.objects.first()
+author1.books.add(Book.objects.first())
+author1.books.add(Book.objects.get(id=2))
+author1.save()
+
+Query: Assign the second author to the first 3 books:
+
+author2=Authors.objects.get(id=2)
+author2.books.add(Book.objects.first())
+author2.books.add(Book.objects.get(id=2))
+author2.books.add(Book.objects.get(id=3))
+author2.save()
+
+Query: Assign the third author to the first 4 books:
+
+author3=Authors.objects.get(id=3)
+author3.books.add(Book.objects.first())
+author3.books.add(Book.objects.get(id=2))
+author3.books.add(Book.objects.get(id=3))
+author3.books.add(Book.objects.get(id=4))
+author3.save()
+
+Query: Assign the fourth author to the first 5 books (or in other words, all the books):
+
+author4=Authors.objects.get(id=4)
+author4.books.add(Book.objects.first())
+author4.books.add(Book.objects.get(id=2))
+author4.books.add(Book.objects.get(id=3))
+author4.books.add(Book.objects.get(id=4))
+author4.books.add(Book.objects.get(id=5))
+author4.save()
+
+Query: Retrieve all the authors for the 3rd book:
+
+book3authors=Book.objects.get(id=3)
+book3authors.authors.all().values()
+
+
+Query: Remove the first author of the 3rd book:
+
+book3authors=Book.objects.get(id=3)
+first_author= Authors.objects.get(first_name='Emily')
+book3authors.authors.remove(first_author)
+
+Query: Add the 5th author as one of the authors of the 2nd book:
+
+author5=Authors.objects.get(id=5)
+author5.books.add(Book.objects.get(id=2))
+author5.save()
+
+Query: Find all the books that the 3rd author is part of:
+
+_3rd_author=Authors.objects.get(id=3)
+_3rd_author.books.all().values()
+
+Query: Find all the authors that contributed to the 5th book:
+
+book5authors=Book.objects.get(id=5)
+book5authors.authors.all().values()
+
+
+
+
+
+

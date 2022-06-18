@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <title>Books & Authors</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="d-flex flex-column m-5">
+            <h1>Add an Author</h1>
+            <form action="" method="post" class="d-flex flex-column">
+                {% csrf_token %}
+                <label for="title">First Name</label>
+                <input type="text" name="fname">
+                <label for="title">last Name</label>
+                <input type="text" name="lname">
+                <label for="desc">Notes</label>
+                <textarea name="note" id="info" cols="30" rows="5"></textarea>
+                <button class="btn btn-dark w-50 my-2">Add</button>
+            </form>
+        </div>
+        <div class="d-flex m-5 col-4">
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for author in authors %}
+                    <tr>
+                        <td>{{author.id}}</td>
+                        <td>{{author.first_name}} {{author.last_name}}</td>
+                        <td><a href="/authors/{{author.id}}">View</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
