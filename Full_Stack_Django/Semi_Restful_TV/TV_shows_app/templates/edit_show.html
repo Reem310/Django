@@ -16,15 +16,15 @@
     <form action="/shows/{{show.id}}/update" method="post" class="d-flex flex-column col-12">
         {% csrf_token %}
         <label for="title">Title</label>
-        <input type="text" name="title" value="{{show.title}}">
+        <input type="text" name="title" value="{{show.title}}" required>
         <div class="d-flex">
             <div>
                 <label for="network">Network</label>
-                <input type="text" name="network" value="{{show.network}}">
+                <input type="text" name="network" value="{{show.network}}" required>
             </div>
             <div class="mx-3">
                 <label for="date">Release Date</label>
-                <input type="date" name="rel_date" value="{{show.release_date|date:'Y-m-d'}}">
+                <input type="date" name="rel_date" value="{{show.release_date|date:'Y-m-d'}}" required>
             </div>
         </div>
         <label for="desc">Describtion</label>
