@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <title>Favorite Books</title>
+</head>
+
+<body class="bg-dark col-md-12">
+    <div class="navbar sticky-top navbar navbar-expand-xs bg-light shadow p-2 px-4">
+        <h1>Favourite Books</h1>
+        <div class="col-8">
+            <h6 class="text-success text-end">Welcome, {{loggedIn.fname}}!</h6>
+        </div>
+        <div>
+            <a href="/destroy" class="btn btn-outline-danger btn-sm">log off</a>
+        </div>
+    </div>
+    <div class="container d-flex col-md-9 mx-auto my-3 justify-content-between bg-light">
+        <div class="mb-4 my-4 mx-4 p-4 col-md-5">
+            <h2>Add a Favorite Book</h2>
+            {% if messages %}
+            <h6 class="messages my-5 text-danger">
+                {% for message in messages %}
+                {% if message.tags %} <p class="{{ message.tags }}" {% endif %}>* {{ message }}
+                    {% endfor %}
+            </h6>
+            {% endif %}
+            <form action="add" method="post" class="form-group col">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="title" class="form-lablel">Title</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-lablel">Description</label>
+                    <textarea name="desc" cols="30" rows="4" class="form-control"></textarea>
+                </div>
+                {% for book in books %}
+                <input type="hidden" name="book_id" value="{{book.id}}">
+                {% endfor %}
+                <div class="text-end">
+                <input type="submit" name="add" value="Add" class="btn btn-primary px-3"></div>
+            </form>
+        </div>
+        <div class="col-md-4 my-4 p-4">
+            <h2>All Books</h2>
+            {% for book in books %}
+            <a href="{{book.id}}">{{book.title}}</a>
+            <h6>(added by {{book.uploaded_by.fname}} {{book.uploaded_by.lname}})</h6>
+            {% if loggedIn in book.liked_books.all %}
+            <p>this book one of your favorites</p>
+            {% else %}
+            <a href="fav/{{book.id}}">Add to Favorite</a><br>
+            {% endif %}
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>
